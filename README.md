@@ -14,7 +14,7 @@ Then I ran a MLflow demo in `./mlflow_test.py`, it's like a simplified version o
 
 MLflow Tracking lets you log and query parameters, code versions, metrics, and output files when running your machine learning code and for later visualizing the results.
 
-Run `	python mlflow_test.py` in the repo directory, this will run the codes with the default XGBoost model. The default hyper-parameters are `n_estimators=7200, max_depth=5, learning_rate=0.01 `. Use the customized parameters by running `	python mlflow_test.py <n_estimators> <max_depth> <learning_rate>`
+Run `python mlflow_test.py` in the repo directory, this will run the codes with the default XGBoost model. The default hyper-parameters are `n_estimators=7200, max_depth=5, learning_rate=0.01 `. Use the customized parameters by running `	python mlflow_test.py <n_estimators> <max_depth> <learning_rate>`
 
 You can then run `mlflow ui`to open up a page with all the experiment details on it.
 
