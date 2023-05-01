@@ -18,6 +18,8 @@ MLflow Tracking lets you log and query parameters, code versions, metrics, and o
 
    `	python mlflow_test.py <n_estimators> <max_depth> <learning_rate>`
 
+   The model will be stored in `./mlruns/0/<experiment_id>/artifacts/model/model.pkl`
+
 
 - You can then run `mlflow ui`to open up a page with all the experiment details on it.
 
