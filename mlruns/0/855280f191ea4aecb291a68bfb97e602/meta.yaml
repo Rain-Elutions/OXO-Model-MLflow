@@ -1,0 +1,15 @@
+artifact_uri: ./mlruns/0/855280f191ea4aecb291a68bfb97e602/artifacts
+end_time: 1682950437156
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 855280f191ea4aecb291a68bfb97e602
+run_name: secretive-fox-655
+run_uuid: 855280f191ea4aecb291a68bfb97e602
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1682950355048
+status: 3
+tags: []
+user_id: zfeng0401
