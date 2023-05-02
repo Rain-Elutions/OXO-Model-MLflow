@@ -1,0 +1,15 @@
+artifact_uri: ./mlruns/0/3f0ed9efa9204d05b920c99f81102237/artifacts
+end_time: 1683057476663
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 3f0ed9efa9204d05b920c99f81102237
+run_name: awesome-shark-363
+run_uuid: 3f0ed9efa9204d05b920c99f81102237
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683057392482
+status: 3
+tags: []
+user_id: zfeng0401
