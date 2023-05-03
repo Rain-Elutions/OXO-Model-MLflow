@@ -1,0 +1,15 @@
+artifact_uri: ./mlruns/0/b70e4bc4a3da47439861f4849281a2de/artifacts
+end_time: 1683124568277
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: b70e4bc4a3da47439861f4849281a2de
+run_name: delicate-snake-946
+run_uuid: b70e4bc4a3da47439861f4849281a2de
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683124462898
+status: 3
+tags: []
+user_id: zfeng0401

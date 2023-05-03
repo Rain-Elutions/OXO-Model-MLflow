@@ -13,6 +13,9 @@ import mlflow
 import mlflow.sklearn
 from xgboost import XGBRegressor
 import time
+from mlflow.entities import Metric
+from mlflow.tracking import MlflowClient
+
 
 import logging
 
@@ -128,16 +131,25 @@ if __name__ == "__main__":
                             eval_metric='rmse',
                             verbose=False)
         results = model.evals_result()
+        train_rmse = results['validation_0']['rmse']
+        val_rmse = results['validation_1']['rmse']
         epochs = len(results['validation_0']['rmse'])
         x_axis = range(0, epochs)
 
         
         fig, ax = plt.subplots()
-        ax.plot(x_axis, results['validation_0']['rmse'], label='Train')
-        ax.plot(x_axis, results['validation_1']['rmse'], label='Validation')
+        ax.plot(x_axis, train_rmse, label='Train')
+        ax.plot(x_axis, val_rmse, label='Validation')
         ax.legend()
         plt.ylabel('RMSE')
         plt.title('XGBoost RMSE')
+
+
+        client = MlflowClient()
+        client.log_batch(mlflow.active_run().info.run_id, 
+            metrics=[Metric(key="train rmse", value=val, timestamp=int(time.time() * 1000), step=i) for i, val in enumerate(train_rmse)])
+        client.log_batch(mlflow.active_run().info.run_id, 
+            metrics=[Metric(key="val rmse", value=val, timestamp=int(time.time() * 1000), step=i) for i, val in enumerate(val_rmse)])
 
 
         # Test
@@ -154,9 +166,9 @@ if __name__ == "__main__":
         mlflow.log_param("n_estimators", n_estimators)
         mlflow.log_param("max_depth", max_depth)
         mlflow.log_param("learning_rate", learning_rate)
-        mlflow.log_metric("rmse", rmse)
-        mlflow.log_metric("mae", mae)
-        mlflow.log_metric("r2", r2)
+        mlflow.log_metric("test rmse", rmse)
+        mlflow.log_metric("test mae", mae)
+        mlflow.log_metric("test r2", r2)
 
         tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
         # print(mlflow.get_tracking_uri())

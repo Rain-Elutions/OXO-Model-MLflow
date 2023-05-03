@@ -1,0 +1,15 @@
+artifact_uri: ./mlruns/0/c25886de0de2499fa9a67b8e5580bbba/artifacts
+end_time: 1683124362140
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c25886de0de2499fa9a67b8e5580bbba
+run_name: receptive-cod-393
+run_uuid: c25886de0de2499fa9a67b8e5580bbba
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683124273164
+status: 3
+tags: []
+user_id: zfeng0401
