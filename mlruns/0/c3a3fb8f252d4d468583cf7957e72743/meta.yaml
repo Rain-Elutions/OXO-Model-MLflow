@@ -1,0 +1,15 @@
+artifact_uri: ./mlruns/0/c3a3fb8f252d4d468583cf7957e72743/artifacts
+end_time: 1683832915481
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: c3a3fb8f252d4d468583cf7957e72743
+run_name: merciful-cat-684
+run_uuid: c3a3fb8f252d4d468583cf7957e72743
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1683832893116
+status: 3
+tags: []
+user_id: zfeng0401
