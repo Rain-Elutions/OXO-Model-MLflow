@@ -178,7 +178,7 @@ def lines_plot(df: pd.DataFrame, list_of_col: list) -> go.Figure:
     fig.update_layout(width=900, height=600, bargap=0.2,
                       margin=dict(b=50,r=30,l=100),
                       title_x=0.5,
-                      yaxis_title="LNG Level",
+                      yaxis_title="5FI696 Level",
                       title = {'text':"<span style='font-size:36px; font-family:Times New Roman'>LNG Level Before & After Optimization</span>"},                  
                       plot_bgcolor='rgb(242,242,242)',
                       paper_bgcolor = 'rgb(242,242,242)',

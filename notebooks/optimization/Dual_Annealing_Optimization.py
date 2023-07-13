@@ -4,6 +4,8 @@ from scipy.optimize import dual_annealing
 from typing import List, Protocol
 import datetime
 from .Data import IncomingData
+import pandas as pd
+import numpy as np
 
 class Model(Protocol):
     """Protocol to represent a model --- must implement a predict function"""
@@ -19,9 +21,11 @@ class Dual_Annealing_Optimization:
     '''
     nomissing_data: IncomingData
     final_model: Model
+    denominator_list: list
+    time_stamps: list
     
     @staticmethod
-    def objective(controls_vals:np.ndarray, noncontrols_vals:np.ndarray, final_model: Model) -> float:
+    def objective(controls_vals:np.ndarray, noncontrols_vals:np.ndarray, final_model: Model, denominator) -> float:
         """
         Objective function for dual annealing optimization.
 
@@ -44,7 +48,23 @@ class Dual_Annealing_Optimization:
 
         # minimize the negative of the predicted value, since dual_annealing is a minimization algorithm
         # and we want to maximize the predicted value, which is the LNG production
-        return -final_model.predict(all_variables)[0]
+        # return -final_model.predict(all_variables)[0]
+
+        # minimize the target variable
+        # return final_model.predict(all_variables)[0]
+
+        pred = final_model.predict(all_variables)[0]
+        kpi1 = pred / denominator
+
+        if kpi1 < 0.84:
+            error = (0.84 - kpi1)**2
+        elif kpi1 > 0.9:
+            error = (kpi1 - 0.9)**2
+        else:
+            error = 0
+
+        # print(f'kpi1: {kpi1}, error: {error}')
+        return error
         
 
     def run_optimization(self, timestamp: datetime.datetime, bound: List[float]) -> np.ndarray:
@@ -58,7 +78,12 @@ class Dual_Annealing_Optimization:
         '''
         controls_vals  = self.nomissing_data.get_control_vals(timestamp).values.flatten()
         noncontrols_vals = self.nomissing_data.get_noncontrol_vals(timestamp).values.flatten()
-        result = dual_annealing(self.objective, bound, args=(noncontrols_vals, self.final_model), x0=controls_vals, maxiter=20)
+
+        # get the index of timestamp in time_stamps
+        index = self.time_stamps.index(timestamp)
+        denominator = self.denominator_list[index]
+
+        result = dual_annealing(self.objective, bound, args=(noncontrols_vals, self.final_model, denominator), x0=controls_vals, maxiter=20)
         
         optimal_all = np.array(np.concatenate([result.x, noncontrols_vals]).reshape(1, -1))
         optimized_product = self.final_model.predict(optimal_all)
