@@ -11,6 +11,6 @@ Thumbs.db
 #  match any __pycache__ folder regardless of its location within your project directory
 
 
-# data/my_dataframe2.csv
-# result/
+data/
+result/
 *.zip
