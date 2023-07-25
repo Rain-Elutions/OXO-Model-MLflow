@@ -39,6 +39,18 @@ class IncomingData:
         '''
         pass
 
+    def calculate_denomitor(self, timestamp: datetime.datetime) -> pd.DataFrame:
+        '''
+        get the denominator value in the kpi1 formula at a single timestamp
+        '''
+        tag2 = self.slicing(timestamp, get_feature_full_name(self.features.additional['tag2'])).values[0][0]
+        tag3 = self.slicing(timestamp, get_feature_full_name(self.features.additional['tag3'])).values[0][0]
+        tag4 = self.slicing(timestamp, get_feature_full_name(self.features.additional['tag4'])).values[0][0]
+        tag5 = self.slicing(timestamp, get_feature_full_name(self.features.additional['tag5'])).values[0][0]
+
+        return (tag2 + tag3)*1000 + tag4 + tag5
+
+
 @dataclass(frozen=True)
 class Missing_info:
     '''

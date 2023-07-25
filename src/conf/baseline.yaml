@@ -30,6 +30,7 @@ xgboost_regressor_config:
     random_state: 42
 
 # v2 is maximizing 5FI696, v3 is minimizing 5FI696, v4 is the standard one to keep kpi within range
+# v2 gets the best hyperparameters and best model by training on shuffled dataset
 result_generating:
   v1:
     model_path: ../result/v1/Sasol_XGB_model.pkl
@@ -76,6 +77,7 @@ result_generating:
     model_path: ../result/v4/Sasol_XGB_model.pkl
     best_parameters_path: ../result/v4/best_parameters.json
     kpi1_optimization_path: ../result/v4/kpi1_optimization.csv
+    result_df_path: ../result/v4/cv_optimized.csv
     visualization:
       controllable_result_path:
         - ../result/v4/plots/Sasol 5FI696 Controllable_Result_Before & After Optimization_1.html
@@ -85,8 +87,4 @@ result_generating:
         - ../result/v4/plots/Sasol 5FI696 Controllable_Result_Before & After Optimization_5.html
       optimized_target_level_path: ../result/v4/plots/5FI696_level_plot.html
       kpi_before_and_after_optimization_path: ../result/v4/plots/kpi1_before_and_after_optimization.html
-    outputing:
-      output_path: ../result/v4/LNG_Optimization_output.csv
-      output_path: ../result/v4/knn_LNG_Optimization_output.csv
-      all_product_output_path: ../result/v4/All_product_result.csv
     

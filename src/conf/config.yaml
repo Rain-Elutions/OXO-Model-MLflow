@@ -45,6 +45,19 @@ num_selected_non_cvs:
   v2: 530
   v3: 524
 
+shuffle_or_not:
+  v1: False
+  v2:
+    shuffle:
+      live_plot: ../result/shuffle_or_not/live_shuffled_lagged.html
+    unshuffle:
+      train_plot: ../result/shuffle_or_not/train_unshuffled_lagged.html
+      val_plot: ../result/shuffle_or_not/val_unshuffled_lagged.html
+      test_plot: ../result/shuffle_or_not/test_unshuffled_lagged.html
+      live_plot: ../result/shuffle_or_not/live_unshuffled_lagged.html
+    table: ../result/shuffle_or_not/rmse_result_table.html
+
+
 
 # data:
 #   raw_data: ../data/alldata.csv # very large

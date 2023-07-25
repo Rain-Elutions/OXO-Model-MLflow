@@ -21,8 +21,8 @@ class Dual_Annealing_Optimization:
     '''
     nomissing_data: IncomingData
     final_model: Model
-    denominator_list: list
-    time_stamps: list
+    # denominator_list: list
+    # time_stamps: list
     
     @staticmethod
     def objective(controls_vals:np.ndarray, noncontrols_vals:np.ndarray, final_model: Model, denominator) -> float:
@@ -78,10 +78,12 @@ class Dual_Annealing_Optimization:
         '''
         controls_vals  = self.nomissing_data.get_control_vals(timestamp).values.flatten()
         noncontrols_vals = self.nomissing_data.get_noncontrol_vals(timestamp).values.flatten()
+        denominator = self.nomissing_data.calculate_denomitor(timestamp)
+        # print(f'denominator: {denominator}')
 
         # get the index of timestamp in time_stamps
-        index = self.time_stamps.index(timestamp)
-        denominator = self.denominator_list[index]
+        # index = self.time_stamps.index(timestamp)
+        # denominator = self.denominator_list[index]
 
         result = dual_annealing(self.objective, bound, args=(noncontrols_vals, self.final_model, denominator), x0=controls_vals, maxiter=20)
         
