@@ -119,6 +119,10 @@ if __name__ == "__main__":
     max_depth = int(sys.argv[2]) if len(sys.argv) > 2 else 5
     learning_rate = float(sys.argv[3]) if len(sys.argv) > 3 else 0.01
 
+    # mlflow.set_tracking_uri("http://localhost:5000")
+    # mlflow.set_tracking_uri("./mlruns")
+    # mlflow.set_tracking_uri("sqlite:///mlruns/mlflowdb.db")
+
     with mlflow.start_run():
         model = XGBRegressor(n_estimators=n_estimators, max_depth=max_depth, 
                              learning_rate=learning_rate, colsample_bytree=0.2, 

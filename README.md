@@ -1,6 +1,6 @@
 # MLflow Demo: XGBoost on SASOL_OXO Data
 
-## Introduction
+#### Introduction
 
 In this project I work on the SASOL OXO data, the original dataset is in `./data/my_example_data.csv`. I did EDA on the data in `./EDA.ipynb`, and then used LSTM and XGBoost to train and test the data, which is also done in `./EDA.ipynb`.  
 
@@ -10,9 +10,11 @@ Then I ran a MLflow demo in `./mlflow_test.py`, it's like a simplified version o
 
 ## Quick Start
 
-**MLflow Tracking**: 
+#### **MLflow Tracking**: 
 
 MLflow Tracking lets you log and query parameters, code versions, metrics, and output files when running your machine learning code and for later visualizing the results.
+
+##### Scenario 1: MLflow on localhost
 
 - Run `python mlflow_test.py` in the repo directory, this will run the codes with the default XGBoost model. The default hyper-parameters are `n_estimators=7200, max_depth=5, learning_rate=0.01 `. Use the customized parameters by running
 
@@ -24,7 +26,20 @@ MLflow Tracking lets you log and query parameters, code versions, metrics, and o
 - You can then run `mlflow ui`to open up a page with all the experiment details on it.
 
 
-**MLflow Projects**: 
+##### Scenario 2: MLflow on localhost with SQLite
+
+- By adding `  mlflow.set_tracking_uri("sqlite:///<db_file_path>/<db_file_name>.db")` , you can run MLflow on their local machines with a SQLAlchemy-compatible database: SQLite. In this case, artifacts are stored under the local ./mlruns directory, and MLflow entities are inserted in a SQLite database file `<db_file_name>.db`
+
+  E.g., `    mlflow.set_tracking_uri("sqlite:///mlruns/mlflowdb.db")`
+
+
+- Download the correct version of Precompiled Binaries from [SQLite Download Page](https://www.sqlite.org/download.html)
+
+- Run `sqlite3` in the command line from the project directory, then run `.tables` to see all the tables created from the experiment. Then run like `SELECT * FROM <table_name>` to check the data stored in `table_name`.
+
+  ​
+
+#### **MLflow Projects**: 
 
 An MLflow Project is a format for packaging data science code in a reusable and reproducible way, based primarily on conventions.
 
