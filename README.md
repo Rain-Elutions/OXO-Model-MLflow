@@ -69,6 +69,12 @@ An MLflow Project is a format for packaging data science code in a reusable and 
 
   ​
 
+## Question Lists
+
+1. Q: I have multiple mlflow projects in different folders, if I do `mlflow run` under the corresponding address they all go to the same server address, and only one project can be displayed on the ui.
+
+   A: Do `mlflow ui -p <port_number>` to specify another port for each project.
+
 ## Reference
 
 1. Official document: [MLflow Documentation — MLflow 2.3.1 documentation](https://mlflow.org/docs/latest/index.html)
